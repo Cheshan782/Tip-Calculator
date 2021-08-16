@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>tip calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id = "container"> 
+        <h1>tip calculators</h1>
+        <hr>
+        <div>
+            <label>total bill:</label>
+            <input type="text" placeholder="Enter your total bill" id="totalbill">
+        </div>
+        <div>
+            <label>tip amount</label>
+            <input type="range" value = "0" id="tipAmount">
+            <span id="tipoutput"></span>
+        </div>
+        <div>
+            <label>split (number of people)</label>
+            <input type="range" min="1" max="15" value="1" id="split">
+            <span id="splitoutput"></span>
+            <hr>
+        </div>
+        <div>
+            <div>
+                <label>New bill(per person):</label><span id="spanNewBill">0</span>
+            </div>
+            <div>
+                <label>Tip amount (per person):</label><span id="spanTipAmountPerPerson">0</span>
+            </div>
+        </div>  
+    </div>
+
+    <script>
+        document.getElementById('container').onchange = function(){
+            var bill = document.getElementById('totalbill').value;
+            var tip = document.getElementById('tipAmount').value;
+            var split = document.getElementById('split').value;
+          
+            var tipAmountTotal = (bill*tip/100);
+            var tipAmountPerPerson = (tipAmountTotal/split);
+            var BillPerPerson = ((bill/split)+tipAmountPerPerson);
+
+            document.getElementById('tipoutput').innerHTML=tip + "%";
+            document.getElementById('splitoutput').innerHTML=split;
+
+            document.getElementById('spanNewBill').innerHTML = BillPerPerson;
+            document.getElementById('spanTipAmountPerPerson').innerHTML=tipAmountPerPerson;         
+            
+        }
+        document.getElementById('tipAmount').onchange = function(){
+            var bill = document.getElementById('totalbill').value;
+            var tip = document.getElementById('tipAmount').value;
+            var split = document.getElementById('split').value;
+              
+            
+            }
+
+    </script>
+
+
+</body>
+</html>
